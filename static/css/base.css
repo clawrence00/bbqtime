@@ -1,3 +1,7 @@
+html {
+    height: 100%;
+}
+
 /* navbar */
 
 .container-fluid {
@@ -8,10 +12,44 @@
     background-color: black !important;
 }
 
+.btn-outline-orange {
+    color: #fff;
+    border-color: #fff;
+}
+
+.btn-outline-orange:hover {
+    color: #fff;
+    background-color: #cc5500;
+    border-color: #cc5500;
+}
+
+header i:hover {
+    color: #fff;
+    background-color: #cc5500;
+    text-decoration: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+header .fa-solid {
+    color: #cc5500;
+    background-color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 24px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 1.65;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
 /* footer */
 
 .page-footer {
     background: url('/media/footer.jpg') no-repeat center center fixed;
+    background-size: cover;
     color: white;
     text-align: right;
     padding: 20px;
@@ -39,10 +77,4 @@ footer .fa-brands {
     height: 40px;
     line-height: 1.65;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
-}
-
-footer a div {
-    font-size: 14px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: 400;
 }
