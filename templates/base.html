@@ -34,8 +34,14 @@
       integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
       crossorigin="anonymous"
     ></script>
-    <script src="https://kit.fontawesome.com/36ab48d395.js" crossorigin="anonymous"></script>
-    {% endblock %} {% block extra_js %} {% endblock %}
+    <script
+      src="https://kit.fontawesome.com/36ab48d395.js"
+      crossorigin="anonymous"
+    ></script>
+    {% endblock %}
+    
+    {% block extra_js %}
+    {% endblock %}
 
     <title>BBQ Time {% block extra_title %}{% endblock %}</title>
   </head>
@@ -82,14 +88,22 @@
             </button>
           </form>
         </div>
-        <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a class="nav-link" href="#"
+          ><i class="fa-solid fa-cart-shopping"></i
+        ></a>
       </nav>
     </header>
 
     {% if messages %}
     <div class="message-container"></div>
-    {% endif %} {% block page_header %} {% endblock %} {% block content %}
-    {%endblock %}
+    {% endif %}
+    
+    {% block page_header %}
+    {% endblock %}
+    
+    {% block content %}
+    {% endblock %}
+
     <footer>
       <div class="container-fluid page-footer">
         <div class="row">

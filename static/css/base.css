@@ -45,6 +45,35 @@ header .fa-solid {
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
 }
 
+body {
+    background: url('/media/hero.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: calc(100vh - 164px);
+    color: #555;
+    /* font-family: 'Lato'; */
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Index css */
+
+.subscribe {
+    padding-top: 1.5rem;
+
+}
+
+/* from W3 schools */
+ul.no-bullets {
+    list-style-type: none;
+    /* Remove bullets */
+    padding: 0;
+    /* Remove padding */
+    margin: 0;
+    /* Remove margins */
+    text-align: left;
+}
+
 /* footer */
 
 .page-footer {
@@ -54,6 +83,9 @@ header .fa-solid {
     text-align: right;
     padding: 20px;
     font-size: 36px;
+    position: fixed;
+    bottom: 0;
+
 }
 
 
