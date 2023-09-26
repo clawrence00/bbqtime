@@ -23,9 +23,9 @@ class Product(models.Model):
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
     description = models.TextField()
-    bullet1 = models.TextField()
-    bullet2 = models.TextField()
-    bullet3 = models.TextField()
+    bullet1 = models.TextField(null=True, blank=True)
+    bullet2 = models.TextField(null=True, blank=True)
+    bullet3 = models.TextField(null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(null=True, blank=True)
 
