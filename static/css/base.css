@@ -1,3 +1,4 @@
+/* -------------------------------------------------------------------base */
 html {
     height: 100%;
 }
@@ -11,7 +12,7 @@ html {
 }
 
 
-/* navbar */
+/* -------------------------------------------------------------------navbar */
 
 .container-fluid {
     padding: 0px;
@@ -65,7 +66,7 @@ body {
 }
 
 
-/* Index css */
+/* ----------------------------------------------------------------Index css */
 
 .subscribe {
     padding-top: 1.5rem;
@@ -110,7 +111,7 @@ ul.no-bullets {
     margin: auto;
 }
 
-/* footer */
+/* ------------------------------------------------------------------footer */
 
 .page-footer {
     background: url('/media/footer.jpg') no-repeat center center fixed;
