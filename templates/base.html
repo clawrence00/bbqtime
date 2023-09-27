@@ -76,18 +76,42 @@
                 >Shop</a
               >
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Accessories</a>
-                <a class="dropdown-item" href="#">Charcoal</a>
-                <a class="dropdown-item" href="#">Rubs & Spices</a>
-                <a class="dropdown-item" href="#">Smoking Wood</a>
-                <a class="dropdown-item" href="{% url 'shop' %}">All Items</a>
+                <a
+                  class="dropdown-item"
+                  href="{% url 'shop' %}?category=accessories"
+                  >Accessories</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="{% url 'shop' %}?category=charcoal"
+                  >Charcoal</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="{% url 'shop' %}?category=rubs_spices"
+                  >Rubs &amp; Spices</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="{% url 'shop' %}?category=smoking_wood"
+                  >Smoking Wood</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="{% url 'shop' %}?category=accessories,charcoal,rubs_spices,smoking_wood"
+                  >All Items</a
+                >
               </div>
             </li>
             <li class="nav-item">
               <a class="nav-link">Login</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'shop' %}">
+          <form
+            class="form-inline my-2 my-lg-0"
+            method="GET"
+            action="{% url 'shop' %}"
+          >
             <input
               class="form-control mr-sm-2"
               type="text"
