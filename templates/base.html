@@ -38,10 +38,7 @@
       src="https://kit.fontawesome.com/36ab48d395.js"
       crossorigin="anonymous"
     ></script>
-    {% endblock %}
-    
-    {% block extra_js %}
-    {% endblock %}
+    {% endblock %} {% block extra_js %} {% endblock %}
 
     <title>BBQ Time {% block extra_title %}{% endblock %}</title>
   </head>
@@ -70,13 +67,20 @@
               <a class="nav-link" href="#">Subscribe</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Shop</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Accessories</a>
-                    <a class="dropdown-item" href="#">Charcoal</a>
-                    <a class="dropdown-item" href="#">Rubs & Spices</a>
-                    <a class="dropdown-item" href="#">Smoking Wood</a>
-                </div>
+              <a
+                class="nav-link dropdown-toggle"
+                data-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-expanded="false"
+                >Shop</a
+              >
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Accessories</a>
+                <a class="dropdown-item" href="#">Charcoal</a>
+                <a class="dropdown-item" href="#">Rubs & Spices</a>
+                <a class="dropdown-item" href="#">Smoking Wood</a>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link">Login</a>
@@ -102,28 +106,31 @@
 
     {% if messages %}
     <div class="message-container"></div>
-    {% endif %}
-    
-    {% block page_header %}
-    {% endblock %}
-    
-    {% block content %}
-    {% endblock %}
+    {% endif %} {% block page_header %} {% endblock %} {% block content %} {% endblock %}
 
     <footer>
       <div class="container-fluid page-footer">
-        <div class="row">
-          <div class="col">BBQ TIME</div>
-          <div class="col">
-        <ul class="list-inline social-links">
+        <div class="col">
+          <ul class="list-inline social-links">
             <li class="list-inline-item">
-                <a target="_blank" href="https://www.facebook.com/" class="fa-brands fa-facebook">
-                </a>
+              <a
+                target="_blank"
+                href="https://www.facebook.com/"
+                class="fa-brands fa-facebook"
+                aria-label="Facebook"
+              >
+              </a>
             </li>
             <li class="list-inline-item">
-                <a target="_blank" href="https://www.instagram.com/" class="fa-brands fa-instagram">
-                </a>
+              <a
+                target="_blank"
+                href="https://www.instagram.com/"
+                class="fa-brands fa-instagram"
+                aria-label="Instagram"
+              >
+              </a>
             </li>
+          </ul>
         </div>
       </div>
     </footer>
