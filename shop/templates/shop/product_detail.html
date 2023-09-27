@@ -1,0 +1,82 @@
+{% extends "base.html" %} {% load static %} {% block page_header %}
+<div class="container header-container">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
+{% endblock %} {% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col text-center">
+      <h2 class="logo-font">Shop</h2>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="card detail-card">
+      {% if product.image %}
+      <img
+        class="img-fluid"
+        src="{{ product.image.url }}"
+        alt="{{ product.name }}"
+      />
+      {% else %}
+      <a href="">
+        <img
+          class="img-fluid"
+          src="{{ MEDIA_URL }}noimage.png"
+          alt="{{ product.name }}"
+        />
+      </a>
+      {% endif %}
+
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+        <ul class="no-bullets">
+          {% if product.bullet3 %}
+          <li>
+            <i class="fa-solid fa-fire" style="color: #cc5500"></i>{{ product.bullet1 }}
+          </li>
+          <li>
+            <i class="fa-solid fa-fire" style="color: #cc5500"></i>{{ product.bullet2 }}
+          </li>
+          <li>
+            <i class="fa-solid fa-fire" style="color: #cc5500"></i>{{ product.bullet3 }}
+          </li>
+          {% elif product.bullet2 %}
+          <li>
+            <i class="fa-solid fa-fire" style="color: #cc5500"></i>{{ product.bullet1 }}
+          </li>
+          <li>
+            <i class="fa-solid fa-fire" style="color: #cc5500"></i>{{ product.bullet2 }}
+          </li>
+          {% elif product.bullet1 %}
+          <li>
+            <i class="fa-solid fa-fire" style="color: #cc5500"></i>{{ product.bullet1 }}
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col">
+            <p>£{{ product.price }}</p>
+          </div>
+          <div class="col">
+            <a href="#" class="btn btn-success">Add to basket</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block page_footer %}
+
+<div class="container footer-container">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
+
+{% endblock %}

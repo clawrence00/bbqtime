@@ -101,6 +101,15 @@ ul.no-bullets {
     margin: 5px;
 }
 
+.detail-card {
+    width: 60vw;
+}
+
+.detail-card img {
+    width: 50%;
+    margin: auto;
+}
+
 /* footer */
 
 .page-footer {
@@ -108,7 +117,6 @@ ul.no-bullets {
     background-size: cover;
     color: white;
     text-align: right;
-    padding: 20px;
     font-size: 36px;
     position: absolute;
     bottom: 0;
