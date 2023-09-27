@@ -1,14 +1,10 @@
-{% extends "base.html" %} {% load static %}
-
-{% block page_header %}
+{% extends "base.html" %} {% load static %} {% block page_header %}
 <div class="container header-container">
-    <div class="row">
-        <div class="col"></div>
-    </div>
+  <div class="row">
+    <div class="col"></div>
+  </div>
 </div>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <div class="container-fluid">
   <div class="row">
     <div class="col text-center mt-3">
@@ -22,7 +18,7 @@
       <div class="row">
         {% for product in shop %}
         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-          <div class="card" style="width: 18rem">
+          <div class="card product-card" style="width: 18rem">
             {% if product.image %}
             <a href="">
               <img
@@ -64,9 +60,9 @@
 {% block page_footer %}
 
 <div class="container footer-container">
-    <div class="row">
-        <div class="col"></div>
-    </div>
+  <div class="row">
+    <div class="col"></div>
+  </div>
 </div>
 
 {% endblock %}
