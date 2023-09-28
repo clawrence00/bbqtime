@@ -69,13 +69,14 @@
               <a class="update-link btn btn-sm btn-success"
                 ><small>Update</small></a
               >
-             
             </td>
             <td class="py-3">
-              <p>
-                £{{ item.product.price | calc_subtotal:item.quantity }}
-              </p>
-            <a class="remove-item btn btn-sm btn-danger" id="remove_{{ item.item_id }}"><small>Delete</small></a>
+              <p>£{{ item.product.price | calc_subtotal:item.quantity }}</p>
+              <a
+                class="remove-item btn btn-sm btn-danger"
+                id="remove_{{ item.item_id }}"
+                ><small>Delete</small></a
+              >
             </td>
           </tr>
           {% endfor %}
@@ -115,6 +116,17 @@
           </tr>
         </table>
       </div>
+      {% else %}
+      <p class="lead mb-5">Your basket is empty.</p>
+      <a
+        href="{% url 'shop' %}"
+        class="btn btn-outline-black rounded-0 btn-lg"
+      >
+        <span class="icon">
+          <i class="fas fa-chevron-left"></i>
+        </span>
+        <span class="text-uppercase">Keep Shopping</span>
+      </a>
       {% endif %}
     </div>
   </div>
