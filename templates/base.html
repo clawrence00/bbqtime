@@ -142,9 +142,14 @@
             </button>
           </form>
         </div>
-        <a class="nav-link" href="{% url 'view_basket' %}"
-          ><i class="fa-solid fa-basket-shopping"></i
-        ></a>
+        <div>
+            <a class="nav-link" href="{% url 'view_basket' %}"
+            ><i class="fa-solid fa-basket-shopping"></i
+            ></a>
+            <p class="my-0 text-center"> 
+            {{ product_count }}
+            </p>
+        </div>
       </nav>
     </header>
 

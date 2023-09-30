@@ -53,6 +53,7 @@ class Order(models.Model):
         else:
             self.delivery_cost = 0
         self.grand_total = self.order_total + self.delivery_cost
+        self.item_total = self.lineitems.aggregate(Sum(self.quantity))
         self.save()
 
     def save(self, *args, **kwargs):

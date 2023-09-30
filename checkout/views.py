@@ -87,6 +87,7 @@ def checkout(request):
 
         current_basket = basket_contents(request)
         total = current_basket['grand_total']
+        item_total = current_basket['item_total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
