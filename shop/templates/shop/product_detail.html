@@ -62,12 +62,14 @@
           <div class="col">
             <p>£{{ product.price }}</p>
           </div>
-        {% if request.user.is_superuser %}
-        <small class="ml-3">
+          {% if request.user.is_superuser %}
+          <small class="ml-3">
             <a href="{% url 'edit_product' product.id %}">Edit</a> |
-            <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-        </small>
-        {% endif %}
+            <a class="text-danger" href="{% url 'delete_product' product.id %}"
+              >Delete</a
+            >
+          </small>
+          {% endif %}
           <form
             class="form"
             action="{% url 'add_to_basket' product.id %}"
@@ -113,6 +115,23 @@
               />
             </div>
           </form>
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <form
+              method="POST"
+              action="{% url 'review_product' product.id %}"
+              class="form mb-2"
+            >
+              {% csrf_token %} {{ form|crispy }}
+              <div class="text-right">
+                <button class="btn btn-black rounded-0" type="submit">
+                  Submit Review
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>

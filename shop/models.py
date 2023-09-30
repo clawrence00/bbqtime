@@ -35,10 +35,10 @@ class Product(models.Model):
 
 class Review(models.Model):
     product = models.ForeignKey(Product, related_name='reviews', on_delete = models.CASCADE)
-    Summary = models.TextField()
+    summary = models.TextField()
     review_text = models.TextField()
     rating = models.IntegerField(default=3)
-    ceated_by = models.ForeignKey(User, related_name='reviews', on_delete = models.CASCADE)
+    created_by = models.ForeignKey(User, related_name='reviews', on_delete = models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

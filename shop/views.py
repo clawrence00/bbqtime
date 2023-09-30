@@ -121,3 +121,27 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('shop'))
+
+@login_required
+def review_product(request, product_id):
+    """Add a review to a product"""
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save()
+            review.product = product
+            review.user = request.user
+            review.save()
+            messages.success(request, 'Your review has been submitted')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Your review has not been submitted')
+    context = {
+        'form': form,
+    }
+
+
+    
+
