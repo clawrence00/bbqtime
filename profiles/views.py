@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from .models import UserProfile
+from .models import UserProfile, Wishlist
 from .forms import UserProfileForm
 
 from checkout.models import Order
@@ -47,4 +47,12 @@ def order_history(request, order_number):
         'from_profile': True,
     }
 
+    return render(request, template, context)
+
+def wishlist(request):
+    wishlist = Wishlist.objects.filter(user=request.user)
+    template = 'profiles/profile_wishlist.html'
+    context = {
+        'wishlist': wishlist
+    }
     return render(request, template, context)
