@@ -8,7 +8,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col text-center">
-      <h2 class="logo-font">Shop</h2>
+      <h2 class="logo-font">{{ product.name }}</h2>
     </div>
   </div>
   <div class="row d-flex justify-content-center">
@@ -127,42 +127,70 @@
             <h2 class="logo-font">Reviews</h2>
         </div>
     </div>
-    <div class="row d-flex justify-content-center">
-        <div class="row">
-            <form
-              method="POST"
-              action="{% url 'review_product' product.id %}"
-              id="review-form"
-              class="form mb-2"
-            >
-              {% csrf_token %} {{ form | crispy }}
-              <div class="text-right">
-                <button class="btn btn-warning" type="submit">
-                  Submit Review
-                </button>
-              </div>
-            </form>
+<div class="row d-flex justify-content-center">
+    <div class="col">
+        {% if request.user.is_authenticated %}
+            <div class="card text-center detail-card">
+                <div class="card-header">
+                    Add a review
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{% url 'review_product' product.id %}" id="review-form" class="form mb-2">
+                        {% csrf_token %} {{ form | crispy }}
+                        <div class="text-right">
+                            <button class="btn btn-warning" type="submit">
+                                Submit Review
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <div class="card text-center detail-card mt-2 mb-2">
+                <div class="card-header">
+                    <h5>Please login to submit a review</h5>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'account_login' %}" class="btn btn-warning">Login</a>
+                </div>
+                <div class="card-footer text-muted">
+                </div>
+            </div>
+        {% endif %}
+        {% for review in product.reviews.all %}
+        <div class="card text-center detail-card mt-2 mb-2">
+            <div class="card-header">
+                <h5>{{ review.summary }}</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ review.review_text }}</p>
+                <p class="card-text">{{ review.rating }}/5</p>
+            </div>
+            <div class="card-footer text-muted">
+                Reviewed by: {{ review.created_by }} on {{ review.created_on }}
+
+                <button class="btn btn-danger">Delete review</button>
+            </div>
         </div>
-        <div class="row">
-            {% for review in product.reviews.all %} {% if review %}
-            <strong>Rating:</strong>{{ review.rating }}/5 <br>
-            <strong>Summary:</strong>{{ review.summary }}<br>
-            <strong>Review:</strong><br>
-            {{ review.review_text }}<br>
-            <p>Created by:{{ review.created_by }} on {{ review.created_on }}</p> {% else %}
-            <p>No reviews yet for this product</p>
-            {% endif %} {% endfor %}
-      </div>
+        {% empty %}
+        <div class="card text-center detail-card mt-2 mb-2">
+            <div class="card-header">
+                <h5>There are no reviews for this product</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Submit the first review!</p>
+            </div>
+            <div class="card-footer text-muted">
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
-
-  {% endblock %} {% block page_footer %}
-
-  <div class="container footer-container">
+<div class="container footer-container">
     <div class="row">
-      <div class="col"></div>
+        <div class="col"></div>
     </div>
-  </div>
+</div>
 
   {% endblock %}
 </div>

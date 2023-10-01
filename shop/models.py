@@ -34,10 +34,19 @@ class Product(models.Model):
         return self.name
 
 class Review(models.Model):
+
+    rating_choices = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    )
+
     product = models.ForeignKey(Product, related_name='reviews', null=True, on_delete = models.CASCADE)
-    summary = models.TextField()
+    summary = models.CharField(max_length=60)
     review_text = models.TextField()
-    rating = models.IntegerField(default=3)
+    rating = models.IntegerField(choices=rating_choices, default=3)
     created_by = models.ForeignKey(User, related_name='reviews', null=True, on_delete = models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
 

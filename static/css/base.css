@@ -11,6 +11,10 @@ html {
     padding-bottom: 164px;
 }
 
+.logo-font {
+    color: #cc5500;
+}
+
 
 /* -------------------------------------------------------------------navbar */
 
@@ -104,6 +108,7 @@ ul.no-bullets {
 
 .detail-card {
     width: 60vw;
+    margin: auto;
 }
 
 .detail-card img {
