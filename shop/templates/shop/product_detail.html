@@ -61,15 +61,14 @@
         <div class="row">
           <div class="col">
             <p>£{{ product.price }}</p>
+            {% if request.user.is_superuser %}
+            <small class="ml-3">
+                <a href="{% url 'edit_product' product.id %}">Edit</a> |
+                <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+            </small>
+            {% endif %}
           </div>
-          {% if request.user.is_superuser %}
-          <small class="ml-3">
-            <a href="{% url 'edit_product' product.id %}">Edit</a> |
-            <a class="text-danger" href="{% url 'delete_product' product.id %}"
-              >Delete</a
-            >
-          </small>
-          {% endif %}
+          
           <form
             class="form"
             action="{% url 'add_to_basket' product.id %}"
@@ -115,6 +114,7 @@
               />
             </div>
           </form>
+          <a class="btn btn-warning" href="{% url 'add_to_wishlist' product.id %}"> Add to Wishlist</a>
         </div>
       </div>
     </div>

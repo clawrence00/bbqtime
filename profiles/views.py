@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import UserProfile, Wishlist
+from shop.models import Product
 from .forms import UserProfileForm
 
 from checkout.models import Order
@@ -50,9 +51,25 @@ def order_history(request, order_number):
     return render(request, template, context)
 
 def wishlist(request):
+    """Display the user's wishlist."""
     wishlist = Wishlist.objects.filter(user=request.user)
     template = 'profiles/profile_wishlist.html'
     context = {
         'wishlist': wishlist
     }
     return render(request, template, context)
+
+
+def add_to_wishlist(request, product_id):
+    """Add item to the user's wishlist."""
+
+    product = get_object_or_404(Product, pk=product_id)
+    wishlist = Wishlist.objects.get_queryset(user=request.user)
+    wishlist.product.add(product)
+    template = 'profiles/profile_wishlist.html'
+    context = {
+        'wishlist': wishlist
+    }
+    return render(request, template, context)
+    
+
