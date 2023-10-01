@@ -144,7 +144,3 @@ def review_product(request, product_id):
         'form': form,
     }
     return render(request, context)
-
-
-    
-

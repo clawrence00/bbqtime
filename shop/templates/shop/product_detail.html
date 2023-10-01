@@ -167,9 +167,7 @@
                 <p class="card-text">{{ review.rating }}/5</p>
             </div>
             <div class="card-footer text-muted">
-                Reviewed by: {{ review.created_by }} on {{ review.created_on }}
-
-                <button class="btn btn-danger">Delete review</button>
+                Reviewed by: {{ review.created_by }} on {{ review.created_on | date:"d-M-Y"}}
             </div>
         </div>
         {% empty %}
