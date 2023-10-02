@@ -48,8 +48,6 @@ class Wishlist(models.Model):
                              null=True, on_delete=models.CASCADE)
     product = models.ForeignKey(
         Product, related_name='wishlist', null=True, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
-
 
     def __str__(self):
-        return f"{self.quantity} of {self.product}"
+        return f"{self.user} wishes for {self.product}"
