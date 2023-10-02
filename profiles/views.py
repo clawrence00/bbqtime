@@ -10,6 +10,7 @@ from checkout.models import Order
 
 # Create your views here.
 
+
 @login_required
 def profile(request):
     """ Display the user's profile. """
@@ -50,6 +51,8 @@ def order_history(request, order_number):
 
     return render(request, template, context)
 
+
+@login_required
 def wishlist(request):
     """Display the user's wishlist."""
     wishlist = Wishlist.objects.filter(user=request.user)
@@ -73,11 +76,9 @@ def add_to_wishlist(request, product_id):
 
 
 @login_required
-def remove_wish(request, wishlist_id):
+def remove_wish(request, wish_id):
 
-    wish = get_object_or_404(Wishlist, pk=wishlist_id)
-    print(wish)
-    
+    wish = get_object_or_404(Wishlist, pk=wish_id)
+    wish.delete()
+
     return HttpResponseRedirect(request.META["HTTP_REFERER"])
-    
-
