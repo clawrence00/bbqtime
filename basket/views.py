@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -22,7 +23,7 @@ def add_to_basket(request, item_id):
         basket[item_id] = quantity
 
     request.session['basket'] = basket
-    return redirect(redirect_url)
+    return HttpResponseRedirect(request.META["HTTP_REFERER"])
 
 
 def update_basket(request, item_id):
