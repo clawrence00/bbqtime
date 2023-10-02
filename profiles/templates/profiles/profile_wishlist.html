@@ -47,7 +47,7 @@
                         <td class="py-3">
                             <p></p>
                             <a class="remove-item btn btn-sm btn-danger"
-                                id="remove_{{ item.item_id }}"><small>Delete</small></a>
+                                id="{% url 'remove_wish' wishlist.id %}"><small>Delete</small></a>
                         </td>
                     </tr>
                     {% endfor %}
