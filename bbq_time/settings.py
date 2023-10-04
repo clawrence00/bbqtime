@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-ll)=a&=u5!%pvhce%i!$=drh@au7(f7&3n&l6-3blu=6k&xbj$
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-clawrence00-bbqtime-9auwmtecbf.us2.codeanyapp.com']
+    '8000-clawrence00-bbqtime-9auwmtecbf.us2.codeanyapp.com', '8000-clawrence00-bbqtime-qpb85c131e.us2.codeanyapp.com']
 
 
 # Application definition
@@ -176,8 +176,7 @@ FREE_DELIVERY_THRESHOLD = 50
 STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
-STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
-STRIPE_PRICE_ID = os.getenv('STRIPE_PRICE_ID', '')
+STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')
 
 
 # Default primary key field type
