@@ -112,7 +112,8 @@ ul.no-bullets {
 }
 
 .detail-card img {
-    width: 50%;
+    height: 400px;
+    object-fit: contain;
     margin: auto;
 }
 
