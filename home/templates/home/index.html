@@ -1,43 +1,30 @@
-{% extends "base.html" %} {% load static %} {% block page_header %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
 <div class="container header-container">
   <div class="row">
     <div class="col"></div>
   </div>
 </div>
-{% endblock %} {% block content %}
+{% endblock %}
+
+{% block content %}
 <div class="container subscribe">
   <div class="row">
     <div class="col-lg-5">
       <div class="card text-center">
         <div class="card-header">It's BBQ Time!</div>
         <div class="card-body">
-          <h5 class="card-title">Subscribe now to start receiving boxes!</h5>
+          <h5 class="card-title">Shop now to take your next BBQ to another level!</h5>
           <ul class="card-text no-bullets">
-            <li>
-              <i class="fa-solid fa-fire" style="color: #cc5500"></i>
-              Reason to subscribe 1 what happens if i write something reallly
-              long in here
-            </li>
-            <br />
-            <li>
-              <i class="fa-solid fa-fire" style="color: #cc5500"></i>Reason to
-              subscribe 2
-            </li>
-            <br />
-            <li>
-              <i class="fa-solid fa-fire" style="color: #cc5500"></i>Reason to
-              subscribe 3
-            </li>
-            <br />
-            <li>
-              <i class="fa-solid fa-fire" style="color: #cc5500"></i>Reason to
-              subscribe 4
-            </li>
-            <br />
+            <li><i class="fa-solid fa-fire" style="color: #cc5500"></i> Accessories!</li><br />
+            <li><i class="fa-solid fa-fire" style="color: #cc5500"></i> Charcoal!</li><br />
+            <li><i class="fa-solid fa-fire" style="color: #cc5500"></i> Rubs & Spices!</li><br />
+            <li><i class="fa-solid fa-fire" style="color: #cc5500"></i> Smoking Wood!</li><br />
+            <li><i class="fa-solid fa-fire" style="color: #cc5500"></i> Free delivery over £50!</li><br />
           </ul>
-          <a href="#" class="btn btn-warning">
-            Subscribe
-          </a>
+        <a class="btn btn-warning" href="{% url 'shop' %}">Shop now!</a>
         </div>
       </div>
     </div>
