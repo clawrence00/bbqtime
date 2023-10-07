@@ -23,13 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ll)=a&=u5!%pvhce%i!$=drh@au7(f7&3n&l6-3blu=6k&xbj$'
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '8000-clawrence00-bbqtime-9auwmtecbf.us2.codeanyapp.com', '8000-clawrence00-bbqtime-qpb85c131e.us2.codeanyapp.com']
+ALLOWED_HOSTS = ['8000-clawrence00-bbqtime-qpb85c131e.us2.codeanyapp.com']
 
 
 # Application definition
@@ -80,7 +79,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',  # required allauth
+                'django.template.context_processors.request', # required allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
