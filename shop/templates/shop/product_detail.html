@@ -24,13 +24,11 @@
         alt="{{ product.name }}"
       />
       {% else %}
-      <a href="">
-        <img
-          class="img-fluid"
-          src="{{ MEDIA_URL }}noimage.png"
-          alt="{{ product.name }}"
-        />
-      </a>
+      <img
+        class="img-fluid"
+        src="{{ MEDIA_URL }}noimage.png"
+        alt="{{ product.name }}"
+      />
       {% endif %}
 
       <div class="card-body">
