@@ -34,9 +34,12 @@ class ReviewForm(forms.ModelForm):
 
         placeholders = {
             'summary': "What's most important to know?",
-            'review_text': 'What did you like or dislike? What did you use the product for?',
+            'review_text': 'What did you like or dislike?\
+                 What did you use the product for?',
             'rating': '',
         }
 
         for field in self.fields:
-            self.fields[field].widget.attrs['placeholder'] = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = (
+                placeholders[field]
+            )
