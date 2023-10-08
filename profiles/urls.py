@@ -12,4 +12,3 @@ urlpatterns = [
     path('remove_wish/<wish_id>/',
          views.remove_wish, name='remove_wish'),
 ]
-

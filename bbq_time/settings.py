@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
-import os
 import dj_database_url
 from pathlib import Path
 
@@ -30,7 +29,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['8000-clawrence00-bbqtime-qpb85c131e.us2.codeanyapp.com', 'bbq-time-7d47ca93266d.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['8000-clawrence00-bbqtime-qpb85c131e.us2.codeanyapp.com',
+                 'bbq-time-7d47ca93266d.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -82,7 +82,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request', # required allauth
+                'django.template.context_processors.request',  # allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
@@ -182,7 +182,7 @@ if 'USE_AWS' in os.environ:
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
         'CacheControl': 'max-age=94608000',
     }
-    
+       
     # Bucket Config
     AWS_STORAGE_BUCKET_NAME = 'bbq-time'
     AWS_S3_REGION_NAME = 'us-east-1'

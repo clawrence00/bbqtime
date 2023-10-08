@@ -28,7 +28,6 @@ class ReviewForm(forms.ModelForm):
         model = Review
         fields = ('summary', 'review_text', 'rating',)
 
-
     def __init__(self, *args, **kwargs):
         """Add placeholders"""
         super().__init__(*args, **kwargs)

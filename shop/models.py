@@ -33,6 +33,7 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+
 class Review(models.Model):
 
     rating_choices = (
@@ -43,11 +44,13 @@ class Review(models.Model):
         (5, '5'),
     )
 
-    product = models.ForeignKey(Product, related_name='reviews', null=True, on_delete = models.CASCADE)
+    product = models.ForeignKey(Product, related_name='reviews',
+                                null=True, on_delete=models.CASCADE)
     summary = models.CharField(max_length=60)
     review_text = models.TextField()
     rating = models.IntegerField(choices=rating_choices, default=3)
-    created_by = models.ForeignKey(User, related_name='reviews', null=True, on_delete = models.CASCADE)
+    created_by = models.ForeignKey(User, related_name='reviews',
+                                   null=True, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
