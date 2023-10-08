@@ -5,6 +5,12 @@ html {
 
 body {
     font-family: 'Heebo', sans-serif;
+    background: url('/media/hero.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: calc(100vh - 164px);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
 }
 .header-container {
     padding-top: 130px;
@@ -61,17 +67,6 @@ header .fa-solid {
     line-height: 1.65;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
 }
-
-body {
-    background: url('/media/hero.jpg') no-repeat center center fixed;
-    background-size: cover;
-    height: calc(100vh - 164px);
-    color: #fff;
-    /* font-family: 'Lato'; */
-    display: flex;
-    flex-direction: column;
-}
-
 
 /* ----------------------------------------------------------------Index css */
 
