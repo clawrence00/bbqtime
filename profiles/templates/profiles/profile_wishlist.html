@@ -14,9 +14,9 @@
 <div class="container mb-2 basket">
     <div class="row">
         <div class="col">
-            <hr />
+            <hr>
             <h2 class="logo-font mb-4">Wishlist</h2>
-            <hr />
+            <hr>
         </div>
     </div>
 
@@ -37,7 +37,7 @@
                     {% for wish in wishlist %}
                     <tr>
                         <td class="p-3 w-25">
-                            <a href="{% url 'product_detail' wish.product.id %}"><img class="img-fluid rounded" src="{{ wish.product.image.url }}" /></a>
+                            <a href="{% url 'product_detail' wish.product.id %}"><img class="img-fluid rounded" src="{{ wish.product.image.url }}" alt="{{ wish.product.name }}"></a>
                         </td>
                         <td class="py-3">
                             <p class="my-0"><strong>{{ wish.product.name }}</strong></p>
