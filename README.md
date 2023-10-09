@@ -1,4 +1,4 @@
-# Milestone Project 4: BBQ TIme
+# Milestone Project 4: BBQ Time
 
 ![Mockup on different screen sizes of home page](https://github.com/clawrence00/bbqtime/blob/main/docs/images/mockup.png)
 Welcome to my fourth milestone project with the Code Institute. The purpose of this project is to 
