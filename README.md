@@ -88,7 +88,7 @@ Users can browse the online shop, add products to the basket and checkout secure
 
 ### Wireframes
 
-Before any code was written wireframes were created using [Balsamiq](https://balsamiq.com/) for each page on three different screen sizes; mobile, tablet and desktop.
+Before any code was written wireframes were created using [Balsamiq](https://balsamiq.com/) for each page on two different screen sizes; mobile and desktop.
 
 [See all wireframes here](https://github.com/clawrence00/bbqtime/blob/main/docs/wireframes.pdf)
 
