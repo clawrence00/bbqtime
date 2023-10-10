@@ -76,11 +76,11 @@ Before any code was written wireframes were created using [Balsamiq](https://bal
 
 ### Data Schema
 
-The following data schema has been created to show the relationship between the data models and the entities within those models.
+The following database schema has been created to show the relationship between the data models and the entities within those models.
 
 ![Data schema](https://github.com/clawrence00/bbqtime/blob/main/docs/images/data_schema.png)
 
-Explain it....
+There are eight database models. 'Users' is the data model that is created by Django allauth and holds individual user logon and session data. The 'user_id' from this data model has been used as a foreign key in three other data models; 'UserProfile', 'Wishlist' and 'Review'. This allows users to save their delivery details and, with the 'product_id' as a second foreign key, add products to the wishlist and add reviews to individual products. The 'Product' data model is also used as a foreign key in the 'OrderLineItem' model along with 'order_id'. This links to the 'Order' data model which collects data for orders placed. Guest order data is still logged as the 'userprofile' key is allowed to be null. The 'Product' data model itself contains the information for individual products and is linked to the 'Category' model by the 'category_id' foreign key. This allows products to be sorted by category.
 
 ### Design Choices
 
@@ -100,7 +100,15 @@ Heebo
 
 #### Images
 
-No images have been used for this application. They would likely be distracting and not what you would typically find on an online dictionary web application unless they were user added images to reinforce definitions.
+The navbar logo was created on [logo.com](https://logo.com/).
+
+Several images have been used in this project. A main image is has been set as the background of a person grilling on a kettle BBQ. This fits in with the theme of the website and made for a nice background to have with the product cards on top of it. This image was sourced from Vincent Keiman on [Unsplash](https://unsplash.com/photos/ul_m5dHThaM).
+
+The footer uses another image of some burning coals, again fitting in with the BBQ theme. This clearly defines the footer and makes the site look more interesting, particularly when a large amount of the foreground is taken up with a product detail card or basket/checkout.  This image was sourced from Almos Bechtold on [Unsplash](https://unsplash.com/photos/GFgWx3o8bTI).
+
+The product images were taken from [Angus & Oink's](https://angusandoink.com/) product range.
+
+The majority of images were resized on [imageresizer.com](https://imageresizer.com/) to either reduce the file size hence improve website performance or to keep the product images at a similar scale.
 
 ![Home page](https://github.com/clawrence00/bbqtime/blob/main/docs/images/home_page.png)
 
