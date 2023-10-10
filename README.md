@@ -1,7 +1,7 @@
 # Milestone Project 4: BBQ Time
 
 ![Mockup on different screen sizes of home page](https://github.com/clawrence00/bbqtime/blob/main/docs/images/mockup.png)
-Welcome to my fourth milestone project with the Code Institute. The purpose of this project is to 
+Welcome to my fourth milestone project with the Code Institute. The purpose of this project is to build a full-stack site based around business logic to control a centrally-owned dataset. Authentication will be required to perform certain actions and gain further value from the site. Stripe has been used to provide online payment processing giving the project e-commerce functionality.
 
 **Please find my deployed site [here](https://bbq-time-7d47ca93266d.herokuapp.com/).**
 
@@ -51,22 +51,38 @@ Welcome to my fourth milestone project with the Code Institute. The purpose of t
 
 ### Project Goals
 
-
+The goal of the project is to build a full-stack site that provides e-commerce functionality so that a user can purchase a product they want and the site owner can make a profit selling products.
 
 ### Customer Goals
 
-
+Users can browse the online shop, add products to the basket and checkout securely. Users can checkout as guests or as registered account holders.
 
 ### Features
 
-- 
-- 
-- 
-- 
+- Users can browse products by category.
+- Users can use a search input to browse for products.
+- Users can checkout securely as guests.
+- Users can register, which saves their details and allows them to view their order history.
+- Users can add products to a wishlist that only they can see.
+- Users can add reviews for products that other users can read.
+- Shop owners can display their products.
+- Shop owners can add, edit and delete products from the shop.
 
 ### User Stories
 
-
+| User story # | As a...          | I want to be able to...                           | so that I can...                                                  |
+|--------------|------------------|---------------------------------------------------|-------------------------------------------------------------------|
+|1	           |shopper           |	view all products	                              | choose something to buy                                           |
+|2	           |shopper	          |view products by category                          |filter the things I want to buy                                    |
+|3	           |shopper	          |search the shop	                                  |   find the product I want to buy without extensive browsing       |
+|4	           |shopper	          |add items to a basket	                          |purchase all items in the basket                                   |
+|5	           |guest shopper     |checkout without signing up                        |purchase items without an account                                  |
+|6	           |registered shopper|save delivery info	                              |not need to enter it each time I purchase something                |
+|7	           |registered shopper|create a wishlist of items                         |find the products easily to puchase them in the future             |
+|8	           |shopper	          |read reviews for individual products               |make an informed decision on whether to purchase the product or not|
+|9	           |shopper	          |leave reviews for individual products I have bought|publish my experience to inform other shoppers                     |
+|10	           |shop owner	      |display products for sale	                      |sell products                                                      |
+|11	           |shop owner	      |provide a secure checkout	                      |give customers confidence to purchase from my shop                 |
 
 ### Wireframes
 
@@ -84,19 +100,23 @@ There are eight database models. 'Users' is the data model that is created by Dj
 
 ### Design Choices
 
-
-
 #### Font
 
-Heebo
+The font used throughout the website is Heebo. This is a sans-serif font that gives the website a clean, contemporary look.
 
 #### Colours
 
+As an image has been used as the main background a black navbar and a dark footer image have been used to frame the webpage. All products and information are placed in cards that use Bootstrap's default styling. This is mainly a white background with some light grey sections to differentiate between parts of the card.
 
+For the font a very dark grey was used to contrast against the light backgrounds.
+
+A theme of orange was used throughout for webpage headings and icons such as the bullet points, the basket and the fire icon bullet points.
+
+Most buttons took on Bootstrap's styling using mostly. the btn-warning and btn-danger classes
 
 #### Styling
 
-
+The bootstrap framework was used for this project. The responsive navbar was used from Bootstraps components. Inspiration was taken from the [album example](https://getbootstrap.com/docs/4.6/examples/album/) for the shop. Cards were used on many pages due to the fixed, consistent layout that they achieved. 
 
 #### Images
 
@@ -124,8 +144,24 @@ The majority of images were resized on [imageresizer.com](https://imageresizer.c
 
 ### Code
 
+- The main bulk of the project was built using the the [Boutique Ado walkthrough](https://github.com/Code-Institute-Solutions/boutique_ado_v1) from the Code Institute.
 
- ---
+- The following sources helped with styling the cards;
+  - As mentioned in the Design Choices section Bootstraps album example
+  -  [sepuckett86's answer](https://stackoverflow.com/questions/37287153/how-to-get-images-in-bootstraps-card-to-be-the-same-height-width) to making images in cards the same.
+  - [ObjectiveTC's answer](https://stackoverflow.com/questions/39031224/how-to-center-cards-in-bootstrap-4) for centering cards
+
+- The following sources were used to create the Wishlist and Review models and also help with the functionality;
+  - For the Review model this [youtube video](https://www.youtube.com/watch?v=8iCqlFyFu2s&ab_channel=CodeWithStein) from Code With Stein
+  - For the Wishlist model this [youtube video](https://www.youtube.com/watch?v=A8rarkE0TKQ&ab_channel=codepiep) from codepiep
+  - Adding to the Wishlist [Ajmal Aamir's answer](https://stackoverflow.com/questions/56580696/how-to-implement-add-to-wishlist-for-a-product-in-django)
+  - Deleting objects [Wolph's answer](https://stackoverflow.com/questions/3805958/how-to-delete-a-record-in-django-models)
+
+### Media
+
+- Product images and descriptions were used from [Angus & Oink's](https://angusandoink.com/) product range.The content and media has been used for educational purposes only.
+
+---
 
 ## Testing
 
