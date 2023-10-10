@@ -266,9 +266,11 @@ Project preparation in your IDE
    - pip freeze --local > requirements.txt
 3. In your settings.py file, import dj_database_url underneath the import for os
 4. Scroll to the DATABASES section and update it to the following code, so that the original connection to sqlite3 is commented out and we connect to the new ElephantSQL database instead. Paste in your ElephantSQL database URL in the position indicated.
+```
     DATABASES = {
         'default': dj_database_url.parse('your-database-url-here')
     }
+```
 
 Deploy the site
 
