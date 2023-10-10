@@ -70,19 +70,21 @@ Users can browse the online shop, add products to the basket and checkout secure
 
 ### User Stories
 
-| User story # | As a...          | I want to be able to...                           | so that I can...                                                  |
-|--------------|------------------|---------------------------------------------------|-------------------------------------------------------------------|
-|1	           |shopper           |	view all products	                              | choose something to buy                                           |
-|2	           |shopper	          |view products by category                          |filter the things I want to buy                                    |
-|3	           |shopper	          |search the shop	                                  |   find the product I want to buy without extensive browsing       |
-|4	           |shopper	          |add items to a basket	                          |purchase all items in the basket                                   |
-|5	           |guest shopper     |checkout without signing up                        |purchase items without an account                                  |
-|6	           |registered shopper|save delivery info	                              |not need to enter it each time I purchase something                |
-|7	           |registered shopper|create a wishlist of items                         |find the products easily to puchase them in the future             |
-|8	           |shopper	          |read reviews for individual products               |make an informed decision on whether to purchase the product or not|
-|9	           |shopper	          |leave reviews for individual products I have bought|publish my experience to inform other shoppers                     |
-|10	           |shop owner	      |display products for sale	                      |sell products                                                      |
-|11	           |shop owner	      |provide a secure checkout	                      |give customers confidence to purchase from my shop                 |
+| User story # | As a...          | I want to be able to...                           | so that I can...        |
+|--------------|------------------|---------------------------------------------------|-------------------------|
+|1	           |shopper           |	view all products	                              | choose something to buy |
+|2	           |shopper	          |view products by category                          |filter the things I want to buy
+|3	           |shopper	          |search the shop	                                  |find the product I want to buy without extensive browsing
+|4	           |shopper	          |add items to a basket	                          |purchase all items in the basket
+|5	           |guest shopper     |checkout without signing up                        |purchase items without an account
+|6	           |registered shopper|save delivery info	                              |not need to enter it each time I purchase something
+|7	           |registered shopper|create a wishlist of items                         |find the products easily to puchase them in the future
+|8	           |shopper	          |read reviews for individual products               |make an informed decision on whether to purchase the product or not
+|9	           |shopper	          |leave reviews for individual products I have bought|publish my experience to inform other shoppers
+|10	           |shop owner	      |display products for sale	                      |sell products
+|11	           |shop owner	      |provide a secure checkout	                      |give customers confidence to purchase from my shop
+
+
 
 ### Wireframes
 
@@ -167,30 +169,37 @@ The majority of images were resized on [imageresizer.com](https://imageresizer.c
 
 ### Testing for this project
 
+Manual testing was performed to check the functionality of the site using an authenticated user, non-authenticated user and the admin. To record this testing a test script was created to follow a sequence of steps with the expected output. The actual output was reported and screenshots were appended to provide evidence of this testing.
 
+The responsiveness was tested during development using Chrome Developer Tools by changing the screen resolution.
+
+Stripe was tested using the following card numbers;
+  - 4000000000009995 for a failed payment. Ensure the expiry date is a date in the future.
+  - 4242424242424242 for a successful payment. Again, ensure the expiry date is a date in the future.
 
 ### Bugs & Fixes
 
-- 
+- Using the Stripe documentation the Stripe CLI was used to test the webhooks. A failure constantly occurred on the payment_inent.succeeded. Searching through Slack the [answer](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1631980362410300) was simple - the test webhook does not contain the required data therefore I was receiving an internal server error. When performing the check within the application all webhooks are received successfully.
+- Using the 'prettier-vscode' extension in the Codeanywhere IDE caused Django template errors when it reformatted the code automatically after manually saving. Instead of manually saving changes I allowed the IDE to auto save which prevented the extension from applying itself.
 
 
 ### Validation
 
-The HTML for the welcome message and a question with answers was checked using the [W3C markup validation service](https://validator.w3.org/). There were some warnings relating to the browse table inside the browse modal. This starts with seven columns for the letters, then 5 columns for the numbers. This was deliberately done to evenly spread the links out and does not affect the rendering of the table. Multiple info messages were found where trailing back slashes are present in the code. These are present due to using the 'prettier-vscode' extension in the Codeanywhere IDE.
+The HTML for all pages was checked using the [W3C markup validation service](https://validator.w3.org/). There were some warnings and errors with all the web pages. Trailing slashes and potential misuse of aria-label were common with most pages. These were addressed appropriately.
 
 The CSS was checked using the [W3C CSS validation service](https://jigsaw.w3.org/css-validator/). There were no issues to report.
 
-Google Lighthouse was used on the mobile version of the home page. The initial findings for accessibility were not 100% due to an aria-label not being present on the mobile sidenav trigger button. This was added, along with a meta tag to described the web application for better search engine optimisation.
+The JS was checked using [JSHint](https://jshint.com/). Any errors or warnings were corrected with the exception of the variable 'stripe' in checkout as this was required for Stripe to work.
 
-Flake8
+Flake8 was used to check for pep8 compliance. All files created were corrected to comply, migrations and django generated code (bbqtime\settings.py) were not corrected. Two lines in checkout\webhook_handler.py are too long and can not be changed without affecting the functionality of the code. In checkout\apps.py there is an error that signals is imported but not used. Signals is required for the app to work correctly therefore was not removed.
 
-All evidence of the validation can be found in the [validation](https://github.com/clawrence00/bbqtime/tree/main/docs/validation) folder.
+All evidence of the testing and validation can be found in the [validation](https://github.com/clawrence00/bbqtime/tree/main/docs/validation) folder.
 
 ---
 
 ## Future implementations
 
-
+- I would have liked to implement an optional subscription for registered users which would give free delivery on all orders and a monthly 'mystery box' product. Subscriptions are possible with Stripe and was attempted using the Stripe documentation however I was unable to implement this.
 
 ---
 
