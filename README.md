@@ -146,7 +146,7 @@ The majority of images were resized on [imageresizer.com](https://imageresizer.c
 
 ### Code
 
-- The main bulk of the project was built using the the [Boutique Ado walkthrough](https://github.com/Code-Institute-Solutions/boutique_ado_v1) from the Code Institute.
+- The main bulk of the project was built using the [Boutique Ado walkthrough](https://github.com/Code-Institute-Solutions/boutique_ado_v1) from the Code Institute.
 
 - The following sources helped with styling the cards;
   - As mentioned in the Design Choices section Bootstraps album example
@@ -161,7 +161,7 @@ The majority of images were resized on [imageresizer.com](https://imageresizer.c
 
 ### Media
 
-- Product images and descriptions were used from [Angus & Oink's](https://angusandoink.com/) product range.The content and media has been used for educational purposes only.
+- Product images and descriptions were used from [Angus & Oink's](https://angusandoink.com/) product range. The content and media has been used for educational purposes only.
 
 ---
 
@@ -179,7 +179,7 @@ Stripe was tested using the following card numbers;
 
 ### Bugs & Fixes
 
-- Using the Stripe documentation the Stripe CLI was used to test the webhooks. A failure constantly occurred on the payment_inent.succeeded. Searching through Slack the [answer](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1631980362410300) was simple - the test webhook does not contain the required data therefore I was receiving an internal server error. When performing the check within the application all webhooks are received successfully.
+- Using the Stripe documentation the Stripe CLI was used to test the webhooks. A failure constantly occurred on the payment_intent.succeeded. Searching through Slack the [answer](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1631980362410300) was simple - the test webhook does not contain the required data therefore I was receiving an internal server error. When performing the check within the application all webhooks are received successfully.
 - Using the 'prettier-vscode' extension in the Codeanywhere IDE caused Django template errors when it reformatted the code automatically after manually saving. Instead of manually saving changes I allowed the IDE to auto save which prevented the extension from applying itself.
 
 
@@ -191,7 +191,7 @@ The CSS was checked using the [W3C CSS validation service](https://jigsaw.w3.org
 
 The JS was checked using [JSHint](https://jshint.com/). Any errors or warnings were corrected with the exception of the variable 'stripe' in checkout as this was required for Stripe to work.
 
-Flake8 was used to check for pep8 compliance. All files created were corrected to comply, migrations and django generated code (bbqtime\settings.py) were not corrected. Two lines in checkout\webhook_handler.py are too long and can not be changed without affecting the functionality of the code. In checkout\apps.py there is an error that signals is imported but not used. Signals is required for the app to work correctly therefore was not removed.
+Flake8 was used to check for pep8 compliance. All files created were corrected to comply, migrations and django generated code (bbqtime\settings.py) were not corrected. Two lines in checkout\webhook_handler.py are too long and cannot be changed without affecting the functionality of the code. In checkout\apps.py there is an error that signals is imported but not used. Signals is required for the app to work correctly therefore was not removed.
 
 All evidence of the testing and validation can be found in the [validation](https://github.com/clawrence00/bbqtime/tree/main/docs/validation) folder.
 
@@ -233,22 +233,6 @@ Set up ElephantSQL to host your database instance
 8. Select a data center near you
 9. Return to the ElephantSQL dashboard and click on the database instance name for this project. Leave this tab open.
 
-In your IDE create files that Heroku will need
-
-1. Generate the requirements.txt file with the following command in the terminal. After you run this command a new file called requirements.txt should appear in your root directory
-
-- pip freeze --local > requirements.txt
-
-2. Heroku requires a Procfile containing a command to run your program. Inside the root directory of your project create the new file. It must be called Procfile with a capital P, otherwise Heroku won’t recognise it.
-3. Inside the file, add the following command
-
-<!-- - web: gunicorn bbq_time.wsgi:application
-
-4. Open your init.py file
-5. Add an if statement before the line setting the SLQALCHEMY_DATABASE_URI and, in the else, set the value to reference a new variable, DATABASE_URL.
-6. To ensure that SQLAlchemy can also read our external database, its URL needs to start with “postgresql://”, but we should not change this in the environment variable. Instead, we’ll make an addition to our else statement from the previous step to adjust our DATABASE_URL in case it starts with postgres://:
-7. Save all your files and then add, commit and push your changes to GitHub -->
-
 Create a new Heroku app
 
 1. Log into Heroku.com and click “New” and then “Create a new app”
@@ -263,31 +247,108 @@ Project preparation in your IDE
 1. In the terminal, install dj_database_url and psycopg2, both of these are needed to connect to your external database.
    - pip3 install dj_database_url==0.5.0 psycopg2
 2. Update your requirements.txt file with the newly installed packages
-   - pip freeze --local > requirements.txt
+   - pip3 freeze > requirements.txt
 3. In your settings.py file, import dj_database_url underneath the import for os
-4. Scroll to the DATABASES section and update it to the following code, so that the original connection to sqlite3 is commented out and we connect to the new ElephantSQL database instead. Paste in your ElephantSQL database URL in the position indicated.
+4. Scroll to the DATABASES section and update it to the following code, so that the original connection to sqlite3 is commented out and we connect to the new ElephantSQL database instead. Paste in your ElephantSQL database URL in the position indicated. DO NOT COMMIT THIS FILE. This is temporary so that the new database can be connected and migrations made.
 ```
     DATABASES = {
         'default': dj_database_url.parse('your-database-url-here')
     }
 ```
 
+5. In the terminal, run the showmigrations command to confirm you are connected to the external database
+   - python3 manage.py showmigrations
+6. If you are, you should see a list of all migrations, but none of them are checked off
+7. Migrate your database models to your new database
+   - python3 manage.py migrate
+8. Create a superuser for your new database. The email address can be left blank.
+   - python3 manage.py createsuperuser
+9. To prevent exposing the database when pushing to GitHub the code in step 4 will be deleted from settings.py. The database in settings.py should look like the following;
+```
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+ ```
+ 10. In settings.py use the following setting to prevent 500 errors during login on the deployed site.
+- ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+Confirm your database
+
+1. On the ElephantSQL page for your database, in the left side navigation, select “BROWSER”
+2. Click the Table queries button, select auth_user
+3. When you click “Execute”, you should see your newly created superuser details displayed. This confirms your tables have been created and you can add data to your database.
+
 Deploy the site
 
-1. Navigate to the “Deploy” tab of your app
-2. In the Deployment method section, select “Connect to GitHub”
-3. Search for your repo and click Connect
-4. Optional: You can click Enable Automatic Deploys in case you make any further changes to the project. This will trigger any time code is pushed to your GitHub repository
-5. Use the Manual deploy section and click Deploy Branch. This will start the build process.
-6. The project is now in place and there is an empty database. The tables from the models.py file need to be added. Click the “More” button and select “Run console”.
-7. Type python3 into the console and click Run
-8. This opens the Python terminal. To create the tables use the following commands;
+1. In your IDE install gunicorn.
+   - pip3 install gunicorn
+2. Update your requirements.txt file with the newly installed package
+   - pip3 freeze > requirements.txt
+2. Heroku requires a Procfile containing a command to run your program. Inside the root directory of your project create the new file. It must be called Procfile with a capital P, otherwise Heroku won’t recognise it.
+3. Inside the file, add the following command
+  - web: gunicorn bbq_time.wsgi:application
+4. In you IDEs terminal log in to Heroku and disable collect static files
+   - heroku config:set DISABLE_COLLECTSTATIC=1 --app [github username]-[github repository name]
+5. In settings.py add Heroku to ALLOWED_HOSTS
+6. Commit and push these changes to GitHub
+7. Navigate to the “Deploy” tab of your app
+8. In the Deployment method section, select “Connect to GitHub”
+9. Search for your repo and click Connect
+10. Optional: You can click Enable Automatic Deploys in case you make any further changes to the project. This will trigger any time code is pushed to your GitHub repository
+11. Use the Manual deploy section and click Deploy Branch. This will start the build process.
+12. The project is now in place.
 
-- from mototorque import db
-- db.create_all()
+Set up an Amazon Web Services Account (AWS)
 
-9. Exit the Python terminal, by typing exit() and hitting enter, and close the console.
-10. Click the “Open app” button to view the deployed site.
+1. Set up an AWS Account
+2. Create a new bucket to store your static files using the S3 service.
+
+Deploy Static files to Heroku
+
+1. In settings.py add the following;
+```
+if 'USE_AWS' in os.environ:
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = 'YOUR BUCKET NAME'
+    AWS_S3_REGION_NAME = 'us-east-1'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+```
+2. The following setting/keys need to be added to the Heroku config Variables;
+   - AWS_ACCESS_KEY_ID
+   - AWS_SECRET_ACCESS_KEY
+   - SECRET_KEY
+   - STRIPE_PUBLIC_KEY
+   - STRIPE_SECRET_KEY
+   - STRIPE_WH_SECRET
+   - USE_AWS : TRUE
+3. DISABLE_COLLECTSTATIC should be removed.
+4. Commit and push these changes to GitHub. If automatic deploys are enabled the Heroku will begin the build. If not, on the Heroku dashboard, in the manual deploy section, click 'deploy branch'.
 
 To **clone this repository**;
 
