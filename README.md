@@ -199,7 +199,7 @@ All evidence of the testing and validation can be found in the [validation](http
 
 ## Future implementations
 
-- I would have liked to implement an optional subscription for registered users which would give free delivery on all orders and a monthly 'mystery box' product. Subscriptions are possible with Stripe and was attempted using the Stripe documentation however I was unable to implement this.
+I would have liked to implement an optional subscription for registered users which would give free delivery on all orders and a monthly 'mystery box' product. Subscriptions are possible with Stripe and was attempted using the Stripe documentation however I was unable to implement this.
 
 ---
 
@@ -242,14 +242,14 @@ In your IDE create files that Heroku will need
 2. Heroku requires a Procfile containing a command to run your program. Inside the root directory of your project create the new file. It must be called Procfile with a capital P, otherwise Heroku won’t recognise it.
 3. Inside the file, add the following command
 
-- web: python app.py
+<!-- - web: gunicorn bbq_time.wsgi:application
 
 4. Open your init.py file
 5. Add an if statement before the line setting the SLQALCHEMY_DATABASE_URI and, in the else, set the value to reference a new variable, DATABASE_URL.
 6. To ensure that SQLAlchemy can also read our external database, its URL needs to start with “postgresql://”, but we should not change this in the environment variable. Instead, we’ll make an addition to our else statement from the previous step to adjust our DATABASE_URL in case it starts with postgres://:
-7. Save all your files and then add, commit and push your changes to GitHub
+7. Save all your files and then add, commit and push your changes to GitHub -->
 
-Conneting the database to Heroku
+Create a new Heroku app
 
 1. Log into Heroku.com and click “New” and then “Create a new app”
 2. Choose a unique name for your app, select the region closest to you and click “Create app”
@@ -257,7 +257,18 @@ Conneting the database to Heroku
 4. Click Reveal Config Vars
 5. Return to your ElephantSQL tab and copy your database URL
 6. Back on Heroku, add a Config Var called DATABASE_URL and paste your ElephantSQL database URL in as the value. Make sure you click “Add”
-7. Add each of your other environment variables except DEVELOPMENT and DB_URL from the env.py file as a Config Var.
+
+Project preparation in your IDE
+
+1. In the terminal, install dj_database_url and psycopg2, both of these are needed to connect to your external database.
+   - pip3 install dj_database_url==0.5.0 psycopg2
+2. Update your requirements.txt file with the newly installed packages
+   - pip freeze --local > requirements.txt
+3. In your settings.py file, import dj_database_url underneath the import for os
+4. Scroll to the DATABASES section and update it to the following code, so that the original connection to sqlite3 is commented out and we connect to the new ElephantSQL database instead. Paste in your ElephantSQL database URL in the position indicated.
+    DATABASES = {
+        'default': dj_database_url.parse('your-database-url-here')
+    }
 
 Deploy the site
 
